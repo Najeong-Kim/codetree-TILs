@@ -1,5 +1,11 @@
 def is_correct_condition(n):
-    return (n % 10) % 3 == 0 or (n // 10) % 3 == 0 or n % 3 == 0
+    result = False
+    for i in range(len(str(n))):
+        if int(str(n)[i]) % 3 == 0:
+            result = True
+    if (n % 3 == 0):
+        result = True
+    return result
 
 def count_369(a, b):
     count = 0
