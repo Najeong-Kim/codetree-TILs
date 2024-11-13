@@ -8,6 +8,7 @@ def find_position_of_substring(string, target):
     for i in range(len(string) - len(target) + 1):
         if string[i:i+len(target)] == target:
             index = i
+            return index
     return index
 
 print(find_position_of_substring(M, N))
