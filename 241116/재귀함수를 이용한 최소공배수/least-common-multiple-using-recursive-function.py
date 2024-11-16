@@ -11,7 +11,7 @@ def LCM(a, b):
 
 def function(n):
     if n == len(arr) - 1:
-        return n
+        return arr[n]
     return LCM(arr[n], function(n + 1))
 
 print(function(arr[0]))
