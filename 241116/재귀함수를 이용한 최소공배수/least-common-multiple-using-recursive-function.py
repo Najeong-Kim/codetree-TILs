@@ -1,9 +1,15 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
-def LCM(n):
-    if all(n % a == 0 for a in arr):
-        return n
-    return LCM(n + 1)
+def LCM(a, b):
+    n = a
+    while (n % a != 0 or n % b != 0):
+        n += 1
+    return n
 
-print(LCM(1))
+def function(n):
+    if n == len(arr):
+        return n
+    return LCM(arr[n], function(n + 1))
+
+print(function(arr[0]))
