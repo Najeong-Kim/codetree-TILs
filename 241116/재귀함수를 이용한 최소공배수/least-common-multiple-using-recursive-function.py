@@ -1,11 +1,13 @@
 n = int(input())
 arr = list(map(int, input().split()))
 
+def GCD(a, b):
+    while b > 0:
+        a, b = b, a % b
+    return a
+
 def LCM(a, b):
-    n = a
-    while (n % a != 0 or n % b != 0):
-        n += 1
-    return n
+    return int(a * b / GCD(a, b))
 
 def function(n):
     if n == len(arr):
