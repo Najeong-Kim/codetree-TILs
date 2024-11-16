@@ -10,7 +10,7 @@ def LCM(a, b):
     return int(a * b / GCD(a, b))
 
 def function(n):
-    if n == len(arr):
+    if n == len(arr) - 1:
         return n
     return LCM(arr[n], function(n + 1))
 
