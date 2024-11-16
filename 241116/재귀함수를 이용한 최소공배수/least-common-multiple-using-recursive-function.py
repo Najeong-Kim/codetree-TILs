@@ -14,4 +14,4 @@ def function(n):
         return arr[n]
     return LCM(arr[n], function(n + 1))
 
-print(function(arr[0]))
+print(function(0))
