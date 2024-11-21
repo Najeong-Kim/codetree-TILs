@@ -1,6 +1,6 @@
 n = int(input())
-arr = [""] * 20000
-position = 10000
+arr = [""] * 200000
+position = 100000
 
 for _ in range(n):
     x, direction = input().split()
