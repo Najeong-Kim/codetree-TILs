@@ -1,27 +1,26 @@
 n = int(input())
-arr = [""] * 20000
-position = 10000
+arr = [""] * 20
+position = 10
 
 for _ in range(n):
     x, direction = input().split()
+    x = int(x)
     if direction == 'L':
-        for i in range(int(x)):
-            position -= 1
-            if arr[position] == 'g':
+        for i in range(position, position - x, -1):
+            if arr[i] == 'g':
                 continue
-            if len(arr[position]) == 0 or arr[position][-1] == 'b':
-                arr[position] += 'w'
-            if len(arr[position]) == 4:
-                arr[position] = 'g'
+            arr[i] += 'w'
+            if arr[i].count('w') >= 2 and arr[i].count('b') >= 2:
+                arr[i] = 'g'
+        position -= x - 1
     else:
-        for i in range(int(x)):
-            if arr[position] == 'g':
+        for i in range(position, position + x):
+            if arr[i] == 'g':
                 continue
-            if len(arr[position]) == 0 or arr[position][-1] == 'w':
-                arr[position] += 'b'
-            if len(arr[position]) == 4:
-                arr[position] = 'g'
-            position += 1
+            arr[i] += 'b'
+            if arr[i].count('w') >= 2 and arr[i].count('b') >= 2:
+                arr[i] = 'g'
+        position += x - 1
 
 white = 0
 black = 0
