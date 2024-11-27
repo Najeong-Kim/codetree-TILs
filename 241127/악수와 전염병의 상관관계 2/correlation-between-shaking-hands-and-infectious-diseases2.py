@@ -14,10 +14,10 @@ for shake in shakes:
     x_count, y_count = result[x], result[y]
     if not x_count and not y_count:
         continue
-    elif x_count > 1:
+    if x_count > 1:
         result[x] -= 1
         result[y] = K + 1
-    elif y_count > 1:
+    if y_count > 1:
         result[y] -= 1
         result[x] = K + 1
 
