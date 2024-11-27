@@ -16,10 +16,12 @@ for shake in shakes:
         continue
     if x_count > 1:
         result[x] -= 1
-        result[y] = K + 1
+        if not y_count:
+            result[y] = K + 1
     if y_count > 1:
         result[y] -= 1
-        result[x] = K + 1
+        if not x_count:
+            result[x] = K + 1
 
 for i in range(1, len(result)):
     if result[i]:
