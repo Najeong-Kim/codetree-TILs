@@ -15,7 +15,7 @@ record_moving(M, B)
 is_changed = 0
 leader = "C"
 
-for i in range(len(A)):
+for i in range(1,len(A)):
     if leader == "C" and A[i] != B[i]:
         is_changed += 1
         leader = "A" if A[i] > B[i] else "B"
