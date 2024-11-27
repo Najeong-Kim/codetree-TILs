@@ -12,7 +12,7 @@ for shake in shakes:
         continue
     x, y = shake[0], shake[1]
     x_count, y_count = result[x], result[y]
-    if x_count and y_count:
+    if not x_count and not y_count:
         continue
     elif x_count > 1:
         result[x] -= 1
