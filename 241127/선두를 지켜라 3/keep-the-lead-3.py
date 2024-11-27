@@ -13,20 +13,20 @@ record_moving(N, A)
 record_moving(M, B)
 
 is_changed = 0
-leader = "C"
+leader = ""
 
 for i in range(1,len(A)):
-    if leader == "C" and A[i] != B[i]:
+    if not len(leader) and A[i] != B[i]:
         is_changed += 1
         leader = "A" if A[i] > B[i] else "B"
-    elif leader != "C" and A[i] == B[i]:
+    elif len(leader) and A[i] == B[i]:
         is_changed += 1
-        leader = "C"
+        leader = ""
     elif leader == "B" and A[i] > B[i]:
-        is_changed += 2
+        is_changed += 1
         leader = "A"
     elif leader == "A" and A[i] < B[i]:
-        is_changed += 2
+        is_changed += 1
         leader = "B"
 
 print(is_changed)   
