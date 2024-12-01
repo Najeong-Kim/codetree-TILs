@@ -2,7 +2,7 @@ n, t = map(int, input().split())
 r, c, d = input().split()
 r, c = int(r) - 1, int(c) - 1
 
-dx, dy = [0, -1, 1, 0], [1, 0, 0, -1]
+dx, dy = [0, 1, -1, 0], [1, 0, 0, -1]
 mapper = {
     'R': 0,
     'D': 1,
