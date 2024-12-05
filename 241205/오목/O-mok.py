@@ -52,4 +52,5 @@ for i in range(19 - 4):
             break
 
 print(result)
-print(x, y)
+if result:
+    print(x, y)
