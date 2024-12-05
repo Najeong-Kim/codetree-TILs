@@ -6,7 +6,7 @@ arr = list(map(int, input().split()))
 difference = sys.maxsize
 
 for i in range(N - 1):
-    for j in range(i, N):
+    for j in range(i + 1, N):
         sum_arr = 0
         for k in range(len(arr)):
             if k == i or k == j:
