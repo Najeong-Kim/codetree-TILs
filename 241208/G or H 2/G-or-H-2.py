@@ -15,11 +15,14 @@ for idx, elem in enumerate(arr):
 checklist = []
 
 for idx, elem in enumerate(alphabets):
+    keep = idx
     for i in range(idx + 1, len(alphabets)):
-        if elem != alphabets[i]:
-            if idx != i - 1:
-                checklist.append([idx, i - 1])
+        if elem == alphabets[i]:
+            keep = i
+        else:
             break
+    if keep != idx:
+        checklist.append([idx, i])
     
     count = {
         'G': 0,
