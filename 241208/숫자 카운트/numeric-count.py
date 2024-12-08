@@ -17,6 +17,8 @@ count = 0
 for i in range(1, 10):
     for j in range(1, 10):
         for k in range(1, 10):
+            if i == j or j == k or k == i:
+                continue
             answers = [i, j, k]
             is_possible = True
             for b in B:
