@@ -7,6 +7,9 @@ for _ in range(N):
 
 result = 0
 
+if K >= 50:
+    result = sum(arr)
+
 for i in range(K, len(arr) - K):
     result = max(result, sum(arr[i-K:i+K+1]))
 
