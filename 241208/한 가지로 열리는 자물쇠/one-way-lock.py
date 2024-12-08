@@ -1,7 +1,7 @@
 N = int(input())
 a, b, c = map(int, input().split())
 
-total = 216
+total = N * N * N
 
 for i in range(1, N + 1):
     for j in range(1, N + 1):
