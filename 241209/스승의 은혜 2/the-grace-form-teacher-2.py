@@ -13,5 +13,7 @@ for i in range(N):
             budget += copy_P[j]
         else:
             result = max(result, j)
+    if budget <= B:
+        result = max(result, len(copy_P))
 
 print(result)
