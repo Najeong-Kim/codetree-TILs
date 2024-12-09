@@ -8,12 +8,13 @@ for i in range(N):
     copy_P[i] //= 2
     copy_P.sort()
     budget = 0
+    count = 0
     for j in range(len(copy_P)):
         if budget + copy_P[j] <= B:
             budget += copy_P[j]
+            count += 1
         else:
-            result = max(result, j)
-    if budget <= B:
-        result = max(result, len(copy_P))
+            break
+    result = max(count, result)
 
 print(result)
