@@ -14,6 +14,8 @@ result = 0
 
 for i in range(M):
     count = 0
+    extra = 0
+    is_spoiled = True
     for j in range(1, N + 1):
         eat = list(filter(lambda x: x[0] == j, eats[i]))
         if len(eat):
@@ -23,8 +25,14 @@ for i in range(M):
             if j in sicks:
                 if sicks[j] > min_eat_time:
                     count += 1
+                else:
+                    is_spoiled = False
             else:
-                count += 1
-    result = max(result, count)
+                extra += 1
+        else:
+            if j in sicks:
+                is_spoiled = False
+    if is_spoiled:
+        result = max(result, count + extra)
 
 print(result)
