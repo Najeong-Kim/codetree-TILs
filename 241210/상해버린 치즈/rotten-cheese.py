@@ -17,9 +17,11 @@ for i in range(M):
     for j in range(1, N + 1):
         eat = list(filter(lambda x: x[0] == j, eats[i]))
         if len(eat):
-            eat_time = eat[0][1]
+            min_eat_time = eat[0][1]
+            for k in eat:
+                min_eat_time = min(k[1], min_eat_time)
             if j in sicks:
-                if sicks[j] > eat_time:
+                if sicks[j] > min_eat_time:
                     count += 1
             else:
                 count += 1
