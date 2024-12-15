@@ -1,11 +1,15 @@
 arr = [list(input()) for _ in range(3)]
 
+results = []
 count = 0
 
 def is_won(line):
     if line[0] == line[1] or line[1] == line[2] or line[2] == line[0]:
         if not line[0] == line[1] == line[2]:
-            return True
+            first, second = min(line), max(line)
+            if not [first, second] in results:
+                results.append([first, second])
+                return True
     return False
 
 for i in range(3):
