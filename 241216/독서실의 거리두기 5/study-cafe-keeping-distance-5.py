@@ -2,21 +2,24 @@ N = int(input())
 arr = list(input())
 
 result = 0
-is_empty = False
-now = 0
 
 for i in range(N):
-    if arr[i] == '0':
-        is_empty = True
-        now += 1
-    elif arr[i] == '1':
-        is_empty = False
-        if now % 2 == 0:
-            result = max(result, now // 2)
-        else:
-            result = max(result, now // 2 + 1)
-        now = 0
+    if arr[i] == '1':
+        continue
+    arr[i] = '1'
 
-result = max(result, now)
+    cur = []
+    for j in range(N):
+        if arr[j] == '1':
+            cur.append(j)
+
+    distance = 20
+
+    for j in range(len(cur)-1):
+        distance = min(distance, cur[j+1] - cur[j])
+    
+    result = max(result, distance)
+
+    arr[i] = '0'
 
 print(result)
