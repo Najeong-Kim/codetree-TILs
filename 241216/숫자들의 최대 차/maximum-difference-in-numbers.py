@@ -6,7 +6,7 @@ result = 0
 
 for i in range(N):
     for j in range(i + 1, N):
-        cur = arr[i:j]
+        cur = arr[i:j + 1]
         if (max(cur) - min(cur)) <= K:
             result = max(result, len(cur))
 
