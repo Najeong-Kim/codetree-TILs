@@ -9,7 +9,7 @@ for i in range(sum(arr)):
         if current + arr[j] <= i:
             current += arr[j]
         else:
-            if current == 0:
+            if arr[j] > i:
                 is_possible = False
             else:
                 count += 1
