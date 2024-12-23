@@ -7,10 +7,9 @@ for score in reversed(range(101)):
     for elem in arr:
         if elem >= score:
             count += 1
-        elif elem + 1 == score and L < plus:
+        elif elem + 1 == score and L > plus:
             plus += 1
             count += 1
     if count >= score:
         print(score)
         break
-
