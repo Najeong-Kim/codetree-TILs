@@ -2,23 +2,22 @@ X = int(input())
 
 result = 10000
 
-for i in range(X):
-    increase = True
-    speed = 0
-    time = 0
-    distance = 0
-    while True:
-        if distance >= X:
-            if speed == 1:
-                result = min(result, time)
-            break
-        if time == i:
-            increase = False
-        if increase:
-            speed += 1
-        else:
-            speed = max(speed - 1, 1)
-        time += 1
-        distance += speed
+def run(speed, time, distance, increase):
+    global result
+    if distance >= X:
+        if speed == 1:
+            result = min(result, time)
+        return
+    if increase == 1:
+        speed += 1
+    elif increase == -1:
+        speed = max(speed - 1, 1)
+    time += 1
+    distance += speed
+    run(speed, time, distance, 1)
+    run(speed, time, distance, 0)
+    run(speed, time, distance, -1)
+
+run(0, 0, 0, 1)
 
 print(result)
