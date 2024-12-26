@@ -1,6 +1,6 @@
 n, m, p = map(int, input().split())
 messages = [list(input().split()) for _ in range(m)]
-alphabet = 'ABCDEFJHIJKLMNOPQRSTUVWXYZ'
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 read = [False] * n
 
 for i in range(m):
