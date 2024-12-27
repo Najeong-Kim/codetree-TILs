@@ -2,29 +2,34 @@ import math
 
 N = int(input())
 seats = list(input())
+start, end = 0, 0
+
+for i in range(len(seats)):
+    if seats[i] == '1':
+        start = i
+        break
+
+for i in reversed(range(len(seats))):
+    if seats[i] == '1':
+        end = i
+        break
 
 def get_distance(seats, isMax = True):
-    start, end = -1, -1
-    now = 0 if seats[0] == '1' else 1
+    now = 0
     distance = 0 if isMax else 1000
     for i in range(1, len(seats)):
         now += 1
         if seats[i] == '1':
-            if isMax and now > distance:
-                start, end = i - now, i
-                distance = now
-            elif not isMax and now < distance and i - now != -1:
-                distance = now
+            distance = max(now, distance) if isMax else min(now, distance)
             now = 0
-    if isMax and now > distance:
-        start, end = len(seats) - now - 1, len(seats)
-        distance = now
-    return start, end, distance
+    return distance
 
-start, end, distance = get_distance(seats)
-_, _, existed = get_distance(seats,False)
+start_distance = start
+end_distance = len(seats) - 1 - end
+between_distance = math.floor(get_distance(seats) / 2)
+default_distance = get_distance(seats, False)
 
-if start == -1 or end == len(seats):
-    print(min(distance - 1, existed))
+if start_distance >= between_distance or end_distance >= between_distance:
+    print(max(min(start_distance, default_distance), min(end_distance, default_distance)))
 else:
-    print(min(math.floor(distance / 2), existed))
+    print(min(between_distance, default_distance))
