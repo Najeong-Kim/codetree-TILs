@@ -13,4 +13,4 @@ def get_distance(seats, isMax = True):
             now = 0
     return distance
 
-print(min(math.ceil(get_distance(seats) / 2), get_distance(seats, False)))
+print(min(math.floor(get_distance(seats) / 2), get_distance(seats, False)))
