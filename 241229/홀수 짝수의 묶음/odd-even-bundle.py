@@ -2,11 +2,6 @@ N = int(input())
 arr = list(map(int, input().split()))
 odd = 0
 even = 0
-isEvenOrder = True
-count = 0
-
-# 짝 == 홀
-# 짝 == 홀 + 1
 
 for elem in arr:
     if elem % 2 == 0:
