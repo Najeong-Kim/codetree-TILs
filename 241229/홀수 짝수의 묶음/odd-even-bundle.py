@@ -16,7 +16,7 @@ for elem in arr:
 
 while True:
     if odd == even:
-        print(N)
+        print(odd + even)
         break
     elif odd < even:
         print(odd * 2 + 1)
