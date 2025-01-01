@@ -86,7 +86,8 @@ for i in range(m):
         if it.next:
             it = it.next
     elif 'D' in now:
-        it = l.erase(it)
+        if it != l.end():
+            it = l.erase(it)
     elif 'P' in now:
         command, value = now.split()
         l.insert(it, value)
