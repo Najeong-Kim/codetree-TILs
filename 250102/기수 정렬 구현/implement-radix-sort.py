@@ -7,7 +7,7 @@ for i in range(k):
     new_arr = [[] for _ in range(10)]
     for j in range(len(arr)):
         if arr[j] >= 10 ** i:
-            new_arr[int(str(arr[j])[i])].append(arr[j])
+            new_arr[int(str(arr[j])[-(i + 1)])].append(arr[j])
         else:
             new_arr[0].append(arr[j])
     temp = []
