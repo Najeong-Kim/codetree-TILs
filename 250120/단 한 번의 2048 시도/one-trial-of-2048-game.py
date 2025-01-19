@@ -16,7 +16,9 @@ if dir == 'L' or dir == 'R':
         now = 0
         repeat = [3, 2, 1, 0] if dir == 'R' else [0, 1, 2, 3]
         for j in repeat:
-            if prev[j] != 0 and now == prev[j]:
+            if prev[j] == 0:
+                continue
+            if now == prev[j]:
                 next.append(now * 2)
                 now = 0
             else:
