@@ -8,7 +8,7 @@ for i in range(1, n + 1):
 
 # Write your code here!
 path = []
-dx, dy = [1, -1, 0, 0], [0, 0, -1, 1]
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 while True:
     path.append(a[r][c])
