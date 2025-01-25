@@ -20,11 +20,11 @@ def in_range(x, y):
 
 while True:
     new_x, new_y = x + dx[dir], y + dy[dir]
-    if visited[new_x][new_y]:
-        isPossible = False
-        break
     if not in_range(new_x, new_y):
         time += 1
+        break
+    if visited[new_x][new_y]:
+        isPossible = False
         break
     if grid[new_x][new_y] == '#':
         dir = (dir + 3) % 4
