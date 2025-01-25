@@ -1,5 +1,6 @@
 N = int(input())
 x, y = map(int, input().split())
+init_x, init_y = x, y
 
 grid = [["."] * (N + 1) for _ in range(N + 1)]
 for i in range(1, N + 1):
@@ -12,7 +13,6 @@ for i in range(1, N + 1):
 dx, dy = [0, 1, 0, -1], [1, 0, -1, 0]
 dir = 0
 time = 0
-visited = [[False] * (N + 1) for _ in range(N + 1)]
 isPossible = True
 
 def in_range(x, y):
@@ -23,19 +23,18 @@ while True:
     if not in_range(new_x, new_y):
         time += 1
         break
-    if visited[new_x][new_y]:
-        isPossible = False
-        break
     if grid[new_x][new_y] == '#':
         dir = (dir + 3) % 4
     else:
         x, y = new_x, new_y
-        visited[x][y] = True
         time += 1
         new_dir = (dir + 1) % 4
         right_x, right_y = x + dx[new_dir], y + dy[new_dir]
         if in_range(right_x, right_y) and grid[right_x][right_y] == '.':
             dir = new_dir
+    if init_x == x and init_y == y and dir == 0:
+        isPossible = False
+        break
 
 if isPossible:
     print(time)
