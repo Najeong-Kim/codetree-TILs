@@ -35,10 +35,6 @@ for i in range(K):
         if not in_range(now_x, now_y):
             is_finished = True
             break
-        for j in range(len(snake_x)):
-            if snake_x[j] == now_x and snake_y[j] == now_y:
-                is_finished = True
-                break
         apple_index = -1
         for j in range(len(x)):
             if x[j] == now_x and y[j] == now_y:
@@ -52,5 +48,9 @@ for i in range(K):
             del y[apple_index]
             snake_x = [now_x] + snake_x
             snake_y = [now_y] + snake_y
+        for j in range(1, len(snake_x)):
+            if snake_x[j] == now_x and snake_y[j] == now_y:
+                is_finished = True
+                break
 
 print(time)
