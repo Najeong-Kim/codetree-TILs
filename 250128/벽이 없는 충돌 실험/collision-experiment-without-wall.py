@@ -16,7 +16,7 @@ for _ in range(T):
         d.append(di)
         num.append(i + 1)
 
-    while time <= 2000:
+    while time <= 4000:
         time += 1
 
         check = {}
