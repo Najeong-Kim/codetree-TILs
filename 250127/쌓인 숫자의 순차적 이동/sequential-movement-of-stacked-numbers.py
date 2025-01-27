@@ -19,7 +19,7 @@ def find_index(number):
                 return (i, j)
 
 def find_max(x, y):
-    mx, my, mv = 0, 0, 0
+    mx, my, mv = -1, -1, 0
     for i in range(8):
         nx, ny = x + dx[i], y + dy[i]
         if in_range(nx, ny):
@@ -34,6 +34,8 @@ for i in range(m):
     x, y = find_index(num)
     mx, my = find_max(x, y)
     index = grid[x][y].index(num)
+    if mx == -1:
+        continue
     grid[mx][my] = grid[x][y][:index + 1] + grid[mx][my]
     grid[x][y] = grid[x][y][index + 1:]
 
