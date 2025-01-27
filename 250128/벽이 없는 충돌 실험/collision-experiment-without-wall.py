@@ -16,14 +16,7 @@ for _ in range(T):
         d.append(di)
         num.append(i + 1)
 
-    while True:
-        is_finish = True
-        for i in range(len(x)):
-            if -1000 <= x[i] <= 1000 and -1000 <= y[i] <= 1000:
-                is_finish = False
-                break
-        if is_finish:
-            break
+    while time <= 2000:
         time += 1
 
         check = {}
