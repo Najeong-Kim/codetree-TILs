@@ -24,21 +24,20 @@ for _ in range(T):
         for i in range(len(x)):
             di = dir.index(d[i])
             x[i], y[i] = x[i] + dx[di] * 0.5, y[i] + dy[di] * 0.5
-            now = (w[i], d[i], num[i])
             if (x[i], y[i]) in check:
                 exist = check[(x[i], y[i])]
-                if now[0] > exist[0] or (now[0] == exist[0] and now[2] > exist[2]):
-                    check[(x[i], y[i])] = now
+                if w[i] > w[exist] or (w[i] == w[exist] and num[i] > num[exist]):
+                    check[(x[i], y[i])] = i
                 result = time
             else:
-                check[(x[i], y[i])] = now
+                check[(x[i], y[i])] = i
         nx, ny, nw, nd, nnum = [], [], [], [], []
         for i in check:
             nx.append(i[0])
             ny.append(i[1])
-            nw.append(check[i][0])
-            nd.append(check[i][1])
-            nnum.append(check[i][2])
+            nw.append(w[check[i]])
+            nd.append(d[check[i]])
+            nnum.append(num[check[i]])
         x, y, w, d, num = nx, ny, nw, nd, nnum
     
     print(result)
