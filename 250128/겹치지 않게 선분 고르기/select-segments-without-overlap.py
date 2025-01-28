@@ -29,5 +29,6 @@ def run(i):
         run(i + 1)
         lines.pop()
 
-run(0)
+for i in range(n):
+    run(i)
 print(result)
