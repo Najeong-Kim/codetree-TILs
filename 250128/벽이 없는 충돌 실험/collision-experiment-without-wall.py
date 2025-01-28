@@ -38,8 +38,7 @@ for _ in range(T):
             if len(now):
                 exist = now[0]
                 if w[i] > w[exist] or (w[i] == w[exist] and i > exist):
-                    check[cx][cy].remove(exist)
-                    check[cx][cy].append(i)
+                    check[cx][cy][check[cx][cy].index(exist)] = i
                     x[i] = cx
                     y[i] = cy
                     x[exist] = None
@@ -50,16 +49,5 @@ for _ in range(T):
                 check[cx][cy].append(i)
                 x[i] = cx
                 y[i] = cy
-            
-        # nx, ny, nw, nd, nnum = [], [], [], [], []
-        # for i in range(len(check)):
-        #     for j in range(len(check)):
-        #         if check[i][j]:
-        #             nx.append(i)
-        #             ny.append(j)
-        #             nw.append(w[check[i][j]])
-        #             nd.append(d[check[i][j]])
-        #             nnum.append(num[check[i][j]])
-        # x, y, w, d, num = nx, ny, nw, nd, nnum
-    
+
     print(result)
