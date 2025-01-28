@@ -1,43 +1,65 @@
 T = int(input())
 
-dir, dx, dy = ['L', 'R', 'U', 'D'], [-1, 1, 0, 0], [0, 0, 1, -1]
+dir, dx, dy = {'L': 0, 'R': 1, 'U': 2, 'D': 3}, [-1, 1, 0, 0], [0, 0, 1, -1]
+
+def in_range(x, y):
+    return 0 <= x <= 4000 and 0 <= y <= 4000
 
 for _ in range(T):
     time = 0
     result = -1
     N = int(input())
-    x, y, w, d, num = [], [], [], [], []
+    x, y, w, d = [], [], [], []
+
+    check = [[[] for _ in range(4001)] for _ in range(4001)]
 
     for i in range(N):
         xi, yi, wi, di = input().split()
-        x.append(int(xi))
-        y.append(int(yi))
+        nx, ny = (int(xi) + 1000) * 2, (int(yi) + 1000) * 2
+        x.append(nx)
+        y.append(ny)
         w.append(int(wi))
         d.append(di)
-        num.append(i + 1)
+        check[nx][ny].append(i)
 
     while time <= 4000:
         time += 1
 
-        check = {}
-
         for i in range(len(x)):
-            di = dir.index(d[i])
-            x[i], y[i] = x[i] + dx[di] * 0.5, y[i] + dy[di] * 0.5
-            if (x[i], y[i]) in check:
-                exist = check[(x[i], y[i])]
-                if w[i] > w[exist] or (w[i] == w[exist] and num[i] > num[exist]):
-                    check[(x[i], y[i])] = i
+            if x[i] == None:
+                continue
+            di = dir[d[i]]
+            cx, cy = x[i] + dx[di], y[i] + dy[di]
+            check[x[i]][y[i]].remove(i)
+            if not in_range(cx, cy):
+                x[i] = None
+                continue
+            now = list(filter(lambda x: x < i, check[cx][cy]))
+            if len(now):
+                exist = now[0]
+                if w[i] > w[exist] or (w[i] == w[exist] and i > exist):
+                    check[cx][cy].remove(exist)
+                    check[cx][cy].append(i)
+                    x[i] = cx
+                    y[i] = cy
+                    x[exist] = None
+                else:
+                    x[i] = None
                 result = time
             else:
-                check[(x[i], y[i])] = i
-        nx, ny, nw, nd, nnum = [], [], [], [], []
-        for i in check:
-            nx.append(i[0])
-            ny.append(i[1])
-            nw.append(w[check[i]])
-            nd.append(d[check[i]])
-            nnum.append(num[check[i]])
-        x, y, w, d, num = nx, ny, nw, nd, nnum
+                check[cx][cy].append(i)
+                x[i] = cx
+                y[i] = cy
+            
+        # nx, ny, nw, nd, nnum = [], [], [], [], []
+        # for i in range(len(check)):
+        #     for j in range(len(check)):
+        #         if check[i][j]:
+        #             nx.append(i)
+        #             ny.append(j)
+        #             nw.append(w[check[i][j]])
+        #             nd.append(d[check[i][j]])
+        #             nnum.append(num[check[i][j]])
+        # x, y, w, d, num = nx, ny, nw, nd, nnum
     
     print(result)
