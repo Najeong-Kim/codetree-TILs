@@ -14,7 +14,7 @@ while len(deq):
     if n + 1 == 1 or n - 1 == 1 or (n % 3 == 0 and n // 3 == 1) or (n % 2 == 0 and n // 2 == 1):
         print(step[n] + 1)
         break
-    if n + 1 < n:
+    if n + 1 < N:
         step[n + 1] = min(step[n + 1], step[n] + 1)
         deq.append(n + 1)
     if n - 1 >= 0:
