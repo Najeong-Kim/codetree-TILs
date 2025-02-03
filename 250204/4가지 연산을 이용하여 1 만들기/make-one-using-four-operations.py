@@ -11,6 +11,9 @@ step[N] = 0
 
 while len(deq):
     n = deq.popleft()
+    if n == 1:
+        print(step[n])
+        break
     if n + 1 == 1 or n - 1 == 1 or (n % 3 == 0 and n // 3 == 1) or (n % 2 == 0 and n // 2 == 1):
         print(step[n] + 1)
         break
