@@ -33,4 +33,4 @@ while len(deq):
 if is_possible:
     print(step[n - 1][m - 1])
 else:
-    print(0)
+    print(-1)
