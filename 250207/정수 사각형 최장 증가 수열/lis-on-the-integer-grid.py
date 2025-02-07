@@ -1,7 +1,6 @@
 n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
 arr = [[1] * n for _ in range(n)]
-result = 0
 
 dx, dy = [1, -1, 0, 0], [0, 0, 1, -1]
 
@@ -14,12 +13,16 @@ def run(x, y):
     for i in range(4):
         nx, ny = x + dx[i], y + dy[i]
         if in_range(nx, ny) and grid[x][y] < grid[nx][ny]:
-            arr[nx][ny] = max(arr[nx][ny], arr[x][y] + 1)
-            run(nx, ny)
-            result = max(result, arr[nx][ny])
+            if arr[nx][ny] < arr[x][y] + 1:
+                arr[nx][ny] = arr[x][y] + 1
+                run(nx, ny)
 
 for i in range(n):
     for j in range(n):
         run(i, j)
 
+result = 0
+for i in range(n):
+    for j in range(n):
+        result = max(result, arr[i][j])
 print(result)
