@@ -3,17 +3,15 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 result = 10 ** 9
 
 min_value = 10 ** 9
-max_value = 0
 
 for i in range(n):
     for j in range(n):
         min_value = min(min_value, grid[i][j])
-        max_value = max(max_value, grid[i][j])
 
 def in_range(x, y):
     return 0 <= x < n and 0 <= y < n
 
-for k in range(min_value, max_value + 1):
+for k in range(min_value, grid[0][0] + 1):
     arr = [[10 ** 9] * n for _ in range(n)]
     arr[0][0] = grid[0][0]
     
