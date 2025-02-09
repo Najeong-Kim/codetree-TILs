@@ -4,7 +4,7 @@ arr = [1] * n
 
 for i in range(n):
     now = m[i]
-    for j in range(i + 1, min(i + 1 + now, n)):
+    for j in range(i + 1, n):
         if now < m[j]:
             arr[j] = max(arr[j], arr[i] + 1)
 
