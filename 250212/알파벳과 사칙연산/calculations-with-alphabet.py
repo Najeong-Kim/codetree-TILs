@@ -1,6 +1,6 @@
 expression = input()
 arr = list(expression)
-result = 0
+result = -10 ** 9
 alphabets = 'abcdef'
 
 def calculate():
