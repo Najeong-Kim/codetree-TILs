@@ -18,7 +18,7 @@ def run(index, count):
     if check == init:
         result = min(result, count)
 
-    if index == n + 1:
+    if index == len(edges):
         return
     
     run(index + 1, count)
