@@ -10,4 +10,7 @@ for i in range(1, M + 1):
             continue
         arr[i] = min(arr[i], arr[now] + 1)
 
-print(arr[M])
+if arr[M] != 10 ** 9:
+    print(arr[M])
+else:
+    print(-1)
