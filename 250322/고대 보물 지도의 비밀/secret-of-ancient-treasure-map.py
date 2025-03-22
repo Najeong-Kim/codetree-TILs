@@ -13,7 +13,7 @@ for i in range(1, n):
         for j in range(1, k + 1):
             dp[i][j] = dp[i - 1][j - 1] + numbers[i]
     else:
-        dp[i][0] = max(dp[i - 1][0], numbers[i])
+        dp[i][0] = max(dp[i - 1][0] + numbers[i], numbers[i])
         for j in range(1, k + 1):
             dp[i][j] = dp[i - 1][j] + numbers[i]
 
