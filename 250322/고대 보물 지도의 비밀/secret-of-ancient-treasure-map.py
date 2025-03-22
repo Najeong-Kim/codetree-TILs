@@ -4,7 +4,6 @@ n, k = map(int, input().split())
 numbers = list(map(int, input().split()))
 dp = [[-math.inf] * (k + 1) for _ in range(n)]
 if numbers[0] < 0:
-    dp[0][0] = 0
     dp[0][1] = numbers[0]
 else:
     dp[0][0] = numbers[0]
