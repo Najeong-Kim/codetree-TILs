@@ -19,4 +19,4 @@ for i in range(1, n):
 result = 0
 for elem in dp[-1]:
     result += sum(elem)
-print(result)
+print(result % (10 ** 9 + 7))
