@@ -1,8 +1,11 @@
+import math
+
 n = int(input())
 first_cards = list(map(int, input().split()))
 second_cards = list(map(int, input().split()))
 
-dp = [[0] * (n + 1) for _ in range(n + 1)]
+dp = [[-math.inf] * (n + 1) for _ in range(n + 1)]
+dp[0][0] = 0
 
 for i in range(n):
     for j in range(n):
