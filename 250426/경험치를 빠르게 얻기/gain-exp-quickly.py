@@ -12,4 +12,7 @@ for i in range(n):
         next_exp = min(j + exp, m)
         dp[next_exp] = min(dp[next_exp], dp[j] + time)
 
-print(dp[-1])
+if dp[-1] == math.inf:
+    print(-1)
+else:
+    print(dp[-1])
