@@ -9,6 +9,8 @@ dp[0] = 0
 for i in range(n):
     exp, time = quests[i]
     for j in range(m, -1, -1):
+        if dp[j] == math.inf:
+            continue
         next_exp = min(j + exp, m)
         dp[next_exp] = min(dp[next_exp], dp[j] + time)
 
