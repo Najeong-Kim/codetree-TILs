@@ -23,14 +23,14 @@ def find_result(i, j):
         print(result[::-1])
         return
 
-    if dp[i - 1][j - 1] + 1 == dp[i][j]:
-        result += A[i - 1]
+    if dp[i - 1][j - 1] + 1 == dp[i][j] and dp[i][j - 1] != dp[i][j] and dp[i - 1][j] != dp[i][j]:
+        result += B[j - 1]
         find_result(i - 1, j - 1)
         result = result[:-1]
     else:
-        if i > 0 and dp[i - 1][j] == dp[i][j]:
-            find_result(i - 1, j)
         if j > 0 and dp[i][j - 1] == dp[i][j]:
             find_result(i, j - 1)
+        if i > 0 and dp[i - 1][j] == dp[i][j]:
+            find_result(i - 1, j)
 
 find_result(len(A), len(B))
