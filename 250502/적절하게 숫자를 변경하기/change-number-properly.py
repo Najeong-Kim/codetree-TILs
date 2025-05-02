@@ -20,4 +20,8 @@ for i in range(N):
                 dp[i + 1][j + 1][k] = max(dp[i + 1][j + 1][k], dp[i][j][(k + 2) % 4] + is_same)
                 dp[i + 1][j + 1][k] = max(dp[i + 1][j + 1][k], dp[i][j][(k + 3) % 4] + is_same)
 
-print(max(dp[-1][-1]))
+result = 0
+for i in range(M + 1):
+    result = max(result, max(dp[-1][i]))
+
+print(result)
