@@ -31,6 +31,8 @@ def find_result(i, j):
                     continue
                 need_change = True
                 for k in range(len(candidate)):
+                    if candidate[k] < result[k]:
+                        break
                     if candidate[k] > result[k]:
                         need_change = False
                         break
