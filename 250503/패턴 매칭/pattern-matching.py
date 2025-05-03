@@ -10,24 +10,26 @@ for i in range(len(p)):
     else:
         patterns.append(p[i])
 
-index = 0
-is_same = 'true'
+dp = [[False] * (len(s) + 1) for _ in range(len(patterns) + 1)]
+dp[0][0] = True
 
-for pattern in patterns:
-    if len(pattern) == 1:
-        if index >= len(s):
-            is_same = 'false'
-            break
-        if pattern == '.' or pattern == s[index]:
-            index += 1
+for i in range(len(patterns)):
+    for j in range(len(s)):
+        if not dp[i][j]:
+            continue
+        pattern = patterns[i]
+        dp[i + 1][j] = True
+        if len(pattern) == 1:
+            if pattern == '.' or pattern == s[j]:
+                dp[i + 1][j + 1] = True
         else:
-            is_same = 'false'
-            break
-    else:
-        for i in range(index, len(s)):
-            if pattern == '.' or pattern == s[i]:
-                index += 1
-            else:
-                continue
+            for k in range(j, len(s)):
+                if pattern[0] == '.' or pattern[0] == s[k]:
+                    dp[i + 1][k + 1] = True
+                else:
+                    continue
 
-print(is_same)
+if dp[-1][-1]:
+    print('true')
+else:
+    print('false')
