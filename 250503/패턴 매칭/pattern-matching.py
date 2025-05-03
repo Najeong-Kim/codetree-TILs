@@ -31,7 +31,7 @@ for i in range(len(patterns)):
                 else:
                     continue
 
-if dp[-1][-1]:
+if all(dp[-1]):
     print('true')
 else:
     print('false')
