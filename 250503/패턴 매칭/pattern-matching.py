@@ -14,11 +14,13 @@ dp = [[False] * (len(s) + 1) for _ in range(len(patterns) + 1)]
 dp[0][0] = True
 
 for i in range(len(patterns)):
-    for j in range(len(s)):
+    for j in range(len(s) + 1):
         if not dp[i][j]:
             continue
         pattern = patterns[i]
         dp[i + 1][j] = True
+        if j >= len(s):
+            continue
         if len(pattern) == 1:
             if pattern == '.' or pattern == s[j]:
                 dp[i + 1][j + 1] = True
