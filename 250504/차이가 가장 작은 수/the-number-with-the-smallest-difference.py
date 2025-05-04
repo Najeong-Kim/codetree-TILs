@@ -4,21 +4,22 @@ n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
 
 # Please write your code here.
-s = SortedSet([arr[0]])
-diff = 10 ** 9 + 10
-for i in range(1, n):
+s = SortedSet()
+diff = 10 ** 10
+for i in range(n):
     s.add(arr[i])
-    index = s.bisect_left(arr[i])
-    if index > 0:
-        current_diff = abs(arr[i] - s[index - 1])
-        if current_diff >= m:
-            diff = min(diff, current_diff)
-    if index < len(s) - 1:
-        current_diff = abs(arr[i] - s[index + 1])
-        if current_diff >= m:
-            diff = min(diff, current_diff)
 
-if diff == (10 ** 9 + 10):
+si = 0
+ei = 1
+while si != len(s) and ei != len(s):
+    start, end = s[si], s[ei]
+    if end - start >= m:
+        diff = min(diff, end - start)
+        si += 1
+    else:
+        ei += 1
+
+if diff == (10 ** 10):
     print(-1)
 else:
     print(diff)
