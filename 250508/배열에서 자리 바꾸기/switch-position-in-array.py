@@ -35,6 +35,10 @@ for query in queries:
         connect(a_prev, dict[c])
         connect(dict[b], d_next)
         connect(dict[d], dict[a])
+    elif dict[d].next and dict[d].next.data == dict[a].data:
+        connect(c_prev, dict[a])
+        connect(dict[d], b_next)
+        connect(dict[b], dict[c])
     else:
         connect(a_prev, dict[c])
         connect(dict[b], d_next)
