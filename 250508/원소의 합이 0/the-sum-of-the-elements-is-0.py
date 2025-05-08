@@ -10,26 +10,38 @@ db = {}
 dc = {}
 dd = {}
 for i in range(n):
-    da[A[i]] = True
-    db[B[i]] = True
-    dc[C[i]] = True
-    dd[D[i]] = True
+    if A[i] in da:
+        da[A[i]] += 1
+    else:
+        da[A[i]] = 1
+    if B[i] in db:
+        db[B[i]] += 1
+    else:
+        db[B[i]] = 1
+    if C[i] in dc:
+        dc[C[i]] += 1
+    else:
+        dc[C[i]] = 1
+    if D[i] in dd:
+        dd[D[i]] += 1
+    else:
+        dd[D[i]] = 1
 
 dab = {}
 dcd = {}
 for a in da:
     for b in db:
         if a + b in dab:
-            dab[a + b] += 1
+            dab[a + b] += da[a] * db[b]
         else:
-            dab[a + b] = 1
+            dab[a + b] = da[a] * db[b]
 
 for c in dc:
     for d in dd:
         if c + d in dcd:
-            dcd[c + d] += 1
+            dcd[c + d] += dc[c] * dd[d]
         else:
-            dcd[c + d] = 1
+            dcd[c + d] = dc[c] * dd[d]
 
 count = 0
 for ab in dab:
