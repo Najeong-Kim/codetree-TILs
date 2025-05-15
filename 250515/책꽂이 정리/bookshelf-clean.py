@@ -41,6 +41,8 @@ for i in range(Q):
             head[i_arr[i]] = book.next
             if head[i_arr[i]]:
                 head[i_arr[i]].prev = None
+            if not head[i_arr[i]]:
+                tail[i_arr[i]] = None
             book.next = None
             if not head[j_arr[i]]:
                 head[j_arr[i]] = book
@@ -55,7 +57,7 @@ for i in range(Q):
             tail[i_arr[i]] = book.prev
             if tail[i_arr[i]]:
                 tail[i_arr[i]].next = None
-            else:
+            if book.prev == None:
                 head[i_arr[i]] = None
             if not tail[j_arr[i]]:
                 tail[j_arr[i]] = book
