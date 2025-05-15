@@ -55,6 +55,8 @@ for i in range(Q):
             tail[i_arr[i]] = book.prev
             if tail[i_arr[i]]:
                 tail[i_arr[i]].next = None
+            else:
+                head[i_arr[i]] = None
             if not tail[j_arr[i]]:
                 tail[j_arr[i]] = book
             book.prev = None
