@@ -13,11 +13,11 @@ words = 'abc'
 
 for i in range(n):
     for j in range(m):
-        for k in range(3):
-            if grid[i][j] == words[k]:
-                prefix_sum[i + 1][j + 1][k] = prefix_sum[i + 1][j][k] + prefix_sum[i][j + 1][k] - prefix_sum[i][j][k] + 1
+        for l in range(3):
+            if grid[i][j] == words[l]:
+                prefix_sum[i + 1][j + 1][l] = prefix_sum[i + 1][j][l] + prefix_sum[i][j + 1][l] - prefix_sum[i][j][l] + 1
             else:
-                prefix_sum[i + 1][j + 1][k] = prefix_sum[i + 1][j][k] + prefix_sum[i][j + 1][k] - prefix_sum[i][j][k]
+                prefix_sum[i + 1][j + 1][l] = prefix_sum[i + 1][j][l] + prefix_sum[i][j + 1][l] - prefix_sum[i][j][l]
 
 for i in range(k):
     r1, c1, r2, c2 = queries[i]
