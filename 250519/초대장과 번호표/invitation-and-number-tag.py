@@ -23,10 +23,12 @@ while len(queue):
     for now_group in attend[person]:
         if finished[now_group]:
             continue
-        diff = list(group[now_group].difference(received))
-        if len(diff) == 0:
+        group_size[now_group] -= 1
+        
+        if group_size[now_group] == 0:
             finished[now_group] = True
-        elif len(diff) == 1:
+        elif group_size[now_group] == 1:
+            diff = list(group[now_group].difference(received))
             received.add(diff[0])
             finished[now_group] = True
             if not attended[diff[0]]:
