@@ -4,11 +4,12 @@ n, m = map(int, input().split())
 nums = list(map(int, input().split()))
 
 s = SortedSet()
+s.add((-(n + 1), -1, n + 1))
 
 for num in nums:
-    count = 0
-    s.add(num)
-    for i in range(len(s) - 1):
-        count = max(count, s[i + 1] - s[i] - 1)
-    count = max(count, n - s[-1], s[0])
-    print(count)
+    for elem in s:
+        if elem[1] < num < elem[2]:
+            s.add((-(num - elem[1] - 1), elem[1], num))
+            s.add((-(elem[2] - num - 1), num, elem[2]))
+            s.remove(elem)
+    print(-s[0][0])
