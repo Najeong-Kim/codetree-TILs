@@ -12,22 +12,23 @@ for j in range(G):
     group_size.append(nums[0])
     group.append(set(nums[1:]))
     for i in range(1, len(nums)):
-        attend[nums[i]].append(j + 1)
+        attend[nums[i]].append(j)
 
 received = set([1])
 queue = deque([1])
 attended[1] = True
 while len(queue):
     person = queue.popleft()
-    now_attend = attend[person]
-    
-    for now_group in now_attend:
-        if finished[now_group - 1]:
+
+    for now_group in attend[person]:
+        if finished[now_group]:
             continue
-        diff = list(group[now_group - 1].difference(received))
-        if len(diff) == 1:
+        diff = list(group[now_group].difference(received))
+        if len(diff) == 0:
+            finished[now_group] = True
+        elif len(diff) == 1:
             received.add(diff[0])
-            finished[now_group - 1] = True
+            finished[now_group] = True
             if not attended[diff[0]]:
                 queue.append(diff[0])
                 attended[diff[0]] = True
