@@ -29,10 +29,11 @@ while len(queue):
             finished[now_group] = True
         elif group_size[now_group] == 1:
             diff = list(group[now_group].difference(received))
-            received.add(diff[0])
+            if len(diff):
+                received.add(diff[0])
+                if not attended[diff[0]]:
+                    queue.append(diff[0])
+                    attended[diff[0]] = True
             finished[now_group] = True
-            if not attended[diff[0]]:
-                queue.append(diff[0])
-                attended[diff[0]] = True
 
 print(len(received))
