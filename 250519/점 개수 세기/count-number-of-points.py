@@ -10,5 +10,5 @@ for i in range(n):
 
 for i in range(q):
     a, b = queries[i]
-    print(s.bisect_left(b) - s.bisect_left(a))
+    print(s.bisect_right(b) - s.bisect_left(a))
     
