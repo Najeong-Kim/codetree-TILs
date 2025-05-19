@@ -5,6 +5,7 @@ group = []
 finished = [False] * G
 group_size = []
 attend = [[] for _ in range(N + 1)]
+attended = [False] * (N + 1)
 
 for j in range(G):
     nums = list(map(int, input().split()))
@@ -15,22 +16,20 @@ for j in range(G):
 
 received = set([1])
 queue = deque([1])
+attended[1] = True
 while len(queue):
     person = queue.popleft()
     now_attend = attend[person]
     
     for now_group in now_attend:
-        count = 0
-        result = 0
         if finished[now_group - 1]:
             continue
-        for i in group[now_group - 1]:
-            if i not in received:
-                count += 1
-                result = i
-        if count == 1:
-            received.add(result)
+        diff = list(group[now_group - 1].difference(received))
+        if len(diff) == 1:
+            received.add(diff[0])
             finished[now_group - 1] = True
-            queue.append(result)
+            if not attended[diff[0]]:
+                queue.append(diff[0])
+                attended[diff[0]] = True
 
 print(len(received))
