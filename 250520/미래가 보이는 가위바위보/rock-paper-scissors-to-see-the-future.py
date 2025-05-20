@@ -38,6 +38,6 @@ for i in range(N - 1, -1, -1):
 
 result = 0
 for i in range(N):
-    result = max(result, H[i] + S[i + 1], H[i] + P[i + 1], S[i] + H[i + 1], S[i] + P[i + 1], P[i] + S[i + 1], P[i] + H[i + 1])
+    result = max(result, H[i] + S2[i], H[i] + P2[i], S[i] + H2[i], S[i] + P2[i], P[i] + S2[i], P[i] + H2[i])
 
 print(result)
