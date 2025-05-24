@@ -8,7 +8,7 @@ count = 0
 for i in range(m):
     while ai + 1 < n and A[ai] != B[i]:
         ai += 1
-    if A[ai] == B[i]:
+    if ai < n and A[ai] == B[i]:
         count += 1
         ai += 1
 
