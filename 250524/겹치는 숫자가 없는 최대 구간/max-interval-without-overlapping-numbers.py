@@ -7,10 +7,10 @@ count = [False] * (10 ** 5 + 1)
 count[arr[0]] = True
 
 for i in range(n):
-    while j < n:
-        now = arr[j]
-        if not count[now]:
-            count[now] = True
+    while j + 1 < n:
+        next = arr[j + 1]
+        if not count[next]:
+            count[next] = True
             j += 1
             result = max(result, j - i + 1)
         else:
