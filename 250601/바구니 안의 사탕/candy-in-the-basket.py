@@ -16,14 +16,13 @@ while end != n - 1:
         start += 1
         end += 1
         current_candy = candy[end][1]
-        result = max(result, current_candy)
     else:
         if candy[end + 1][0] - candy[start][0] <= 2 * k:
             end += 1
             current_candy += candy[end][1]
-            result = max(result, current_candy)
         else:
-            start += 1
             current_candy -= candy[start][1]
+            start += 1
+    result = max(result, current_candy)
 
 print(result)
