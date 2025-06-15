@@ -2,7 +2,7 @@ N, M = map(int, input().split())
 arr = []
 for i in range(N):
     w, v = map(int, input().split())
-    arr.append([round(v / w, 4), w, v])
+    arr.append([v / w, w, v])
 
 arr.sort(lambda x: -x[0])
 
